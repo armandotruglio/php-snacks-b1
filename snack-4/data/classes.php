@@ -241,7 +241,7 @@ $classi = [
 
 //Filtered students with sufficient average grade
 
-$filteredClass = [];
+/*$filteredClass = [];
 
 foreach ($classi as $className => $class) {
     $filteredClass[$className] = [];
@@ -251,3 +251,4 @@ foreach ($classi as $className => $class) {
             $filteredClass[$className][] = $student;
     }
 }
+*/

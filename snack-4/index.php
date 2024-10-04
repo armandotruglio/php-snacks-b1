@@ -2,6 +2,23 @@
 
 require __DIR__ . "/data/classes.php";
 
+
+$voteFilter = $_GET["vote"];
+
+if (isset($_GET["vote"])) {
+    $filteredClass = [];
+
+    foreach ($classi as $className => $class) {
+        $filteredClass[$className] = [];
+
+        foreach ($class as $student) {
+            if ($student["voto_medio"] >= $voteFilter)
+                $filteredClass[$className][] = $student;
+        }
+    }
+} else
+    $filteredClass = $classi;
+
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +36,19 @@ require __DIR__ . "/data/classes.php";
 </head>
 
 <body>
-    <h1 class="text-center">CLASSES</h1>
+    <h1 class="text-center py-3">CLASSES</h1>
 
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="index.php" method="GET" class="py-3">
+                    <input type="number" class="form-control mb-3" name="vote"
+                        placeholder="Inserisci un filtro per il voto">
+                    <button type="submit" class="btn btn-primary mx-3">FILTRA</button>
+                    <button type="reset" class="btn btn-warning">RESETTA</button>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <!-- Classes name loop -->
             <?php foreach ($filteredClass as $className => $class) { ?>
