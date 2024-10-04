@@ -1,0 +1,12 @@
+ul {
+    list-style-type: none;
+    color: white;
+}
+
+.teachers {
+    background-color: gray;
+}
+
+.pm {
+    background-color: green;
+}
