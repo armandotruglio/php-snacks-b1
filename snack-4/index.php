@@ -1,24 +1,36 @@
 <?php
-
 require __DIR__ . "/data/classes.php";
 
-
-$voteFilter = $_GET["vote"];
-
-if (isset($_GET["vote"])) {
+//Filter by vote
+if (isset($_GET["vote"]) && ($_GET["vote"] >= 1 || $_GET["vote"] <= 10)) {
     $filteredClass = [];
 
     foreach ($classi as $className => $class) {
         $filteredClass[$className] = [];
 
         foreach ($class as $student) {
-            if ($student["voto_medio"] >= $voteFilter)
+            if ($student["voto_medio"] >= $_GET["vote"])
                 $filteredClass[$className][] = $student;
         }
     }
 } else
     $filteredClass = $classi;
 
+
+//Filter by favourite subject
+if (isset($_GET["subject"]) && ($_GET["subject"] !== "")) {
+    $currentClass = [];
+
+    foreach ($filteredClass as $className => $class) {
+        $currentClass[$className] = [];
+
+        foreach ($class as $student) {
+            if ($student["linguaggio_preferito"] === $_GET["subject"])
+                $currentClass[$className][] = $student;
+        }
+    }
+    $filteredClass = $currentClass;
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +56,10 @@ if (isset($_GET["vote"])) {
                 <form action="index.php" method="GET" class="py-3">
                     <input type="number" class="form-control mb-3" name="vote"
                         placeholder="Inserisci un filtro per il voto">
+
+                    <input type="text" class="form-control mb-3" name="subject"
+                        placeholder="Inserisci un filtro per la materia preferita">
+
                     <button type="submit" class="btn btn-primary mx-3">FILTRA</button>
                     <button type="reset" class="btn btn-warning">RESETTA</button>
                 </form>
