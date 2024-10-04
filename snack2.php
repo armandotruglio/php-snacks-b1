@@ -1,14 +1,3 @@
-<?php
-
-$name = (strlen($_GET["name"]) > 3) ? $_GET["name"] : null;
-$mail = (str_contains($_GET["mail"], "@") && str_contains($_GET["mail"], ".")) ? $_GET["mail"] : null;
-$age = (is_numeric($_GET["age"])) ? $_GET["age"] : null;
-$isValid = ($name && $mail && $age) ? "Accesso riuscito" : "Accesso negato";
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +9,11 @@ $isValid = ($name && $mail && $age) ? "Accesso riuscito" : "Accesso negato";
 
 <body>
 
-    <form action="snack2.php" method="GET">
+    <form action="snack2-validation.php" method="GET">
         <input type="text" name="name" placeholder="name">
         <input type="email" name="mail" placeholder="email">
         <input type="number" name="age" placeholder="age">
         <button type="submit"> INVIA </button>
-
-        <span> <?= $isValid ?></span>
     </form>
 </body>
 
