@@ -25,7 +25,7 @@ if (isset($_GET["subject"]) && ($_GET["subject"] !== "")) {
         $currentClass[$className] = [];
 
         foreach ($class as $student) {
-            if ($student["linguaggio_preferito"] === $_GET["subject"])
+            if (strtolower($student["linguaggio_preferito"]) === strtolower($_GET["subject"]))
                 $currentClass[$className][] = $student;
         }
     }
