@@ -238,3 +238,16 @@ $classi = [
         ],
     ],
 ];
+
+//Filtered students with sufficient average grade
+
+$filteredClass = [];
+
+foreach ($classi as $className => $class) {
+    $filteredClass[$className] = [];
+
+    foreach ($class as $student) {
+        if ($student["voto_medio"] >= 6)
+            $filteredClass[$className][] = $student;
+    }
+}

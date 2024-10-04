@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/data/classes.php"
+require __DIR__ . "/data/classes.php";
 
 ?>
 
@@ -24,7 +24,7 @@ require __DIR__ . "/data/classes.php"
     <div class="container">
         <div class="row">
             <!-- Classes name loop -->
-            <?php foreach ($classi as $className => $class) { ?>
+            <?php foreach ($filteredClass as $className => $class) { ?>
                 <div class="col-12">
                     <h3><?= $className ?></h3>
                 </div>
